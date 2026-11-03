@@ -1,0 +1,14 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": ["typescript", "unicorn", "oxc", "vitest"],
+  "categories": {
+    "correctness": "error",
+    "suspicious": "warn"
+  },
+  "rules": {
+    "unicorn/no-thenable": "off",
+    "vitest/max-expects": ["error", { "max": 1 }],
+    "vitest/no-hooks": "error"
+  },
+  "ignorePatterns": ["dist/**", "node_modules/**", "coverage/**"]
+}

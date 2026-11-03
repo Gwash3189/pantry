@@ -1,0 +1,64 @@
+{
+  "name": "pantry",
+  "version": "0.0.1",
+  "description": "A fluent, lightweight TypeScript caching library with pluggable backend adapters, TTL, LRU eviction, and stale-while-revalidate support.",
+  "license": "MIT",
+  "author": "gwash3189",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.mts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.mts",
+        "default": "./dist/index.mjs"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsdown",
+    "dev": "tsdown --watch",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "type-check": "tsc --noEmit",
+    "lint": "oxlint",
+    "lint:fix": "oxlint --fix",
+    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
+    "format:check": "prettier --check \"src/**/*.ts\" \"test/**/*.ts\"",
+    "prepublishOnly": "npm run type-check && npm run lint && npm run test && npm run build",
+    "clean": "rm -rf dist"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.6",
+    "@vitest/coverage-v8": "^5.1.0",
+    "oxlint": "^1.90.0",
+    "prettier": "^3.9.10",
+    "tsdown": "^0.23.4",
+    "typescript": "^7.0.2",
+    "vitest": "^5.1.0"
+  },
+  "keywords": [
+    "cache",
+    "pantry",
+    "swr",
+    "stale-while-revalidate",
+    "lru",
+    "ttl",
+    "adapter",
+    "typescript"
+  ],
+  "engines": {
+    "node": ">=22.0.0"
+  }
+}
