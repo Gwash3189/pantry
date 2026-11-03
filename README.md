@@ -1,4 +1,4 @@
-# pantry
+# @gwash3189/pantry
 
 A fluent, zero-dependency TypeScript caching library with pluggable storage adapters, TTL expiration, LRU memory eviction, and first-class `stale-while-revalidate` (SWR) support.
 
@@ -7,7 +7,7 @@ Defaults to a fast in-process `MemoryAdapter`, with a clean `PantryAdapter` inte
 ## Installation
 
 ```bash
-npm install pantry
+npm install @gwash3189/pantry
 ```
 
 ## Usage
@@ -15,7 +15,7 @@ npm install pantry
 ### Fluent API
 
 ```ts
-import Pantry from 'pantry'
+import Pantry from '@gwash3189/pantry'
 
 const stats = await Pantry.key('dashboard:stats')
   .ttl('1m')
@@ -31,7 +31,7 @@ const stats = await Pantry.key('dashboard:stats')
 ### Direct Functional API
 
 ```ts
-import { pantry } from 'pantry'
+import { pantry } from '@gwash3189/pantry'
 
 const user = await pantry(`user:${id}`, { ttl: '30s', swr: '2m' }, async () => {
   return await db.users.find(id)
@@ -53,7 +53,7 @@ await Pantry.clear()
 By default, `pantry` uses an in-process `MemoryAdapter`. You can configure an LRU `maxSize` or build custom backend adapters implementing `PantryAdapter`:
 
 ```ts
-import Pantry, { MemoryAdapter, type PantryAdapter, type CacheRecord } from 'pantry'
+import Pantry, { MemoryAdapter, type PantryAdapter, type CacheRecord } from '@gwash3189/pantry'
 
 // Configure default in-memory adapter with LRU eviction at 1,000 items
 Pantry.use(new MemoryAdapter({ maxSize: 1_000 }))
